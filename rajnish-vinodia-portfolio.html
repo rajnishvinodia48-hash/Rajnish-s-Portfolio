@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rajnish Vinodia — Creative Director & Filmmaker</title>
+<meta name="description" content="Rajnish Vinodia is a creative director, filmmaker and Director of Photography based in Jabalpur & Raipur — cinematic work for government institutions, luxury hospitality and music labels.">
+<meta name="theme-color" content="#0B0B0B">
+<meta property="og:title" content="Rajnish Vinodia — Creative Director & Filmmaker">
+<meta property="og:description" content="Six-plus years of cinematic storytelling across government, luxury and music — now building Pitara Filmz.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/og-cover.jpg">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Rajnish Vinodia","jobTitle":"Creative Director","image":"assets/headshot.jpg","address":{"@type":"PostalAddress","addressLocality":"Jabalpur","addressRegion":"Madhya Pradesh","addressCountry":"IN"},"worksFor":{"@type":"Organization","name":"Pitara Filmz"}}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Schibsted+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0B0B0B',
+          charcoal: '#151515',
+          charcoal2: '#1C1A16',
+          bone: '#EDEAE2',
+          smoke: '#96897A',
+          gold: { DEFAULT: '#C9A24B', light: '#E8C784', dim: '#8A7239' },
+          ember: '#E8834A',
+        },
+        fontFamily: {
+          display: ['"Bodoni Moda"', 'serif'],
+          sans: ['"Schibsted Grotesk"', 'sans-serif'],
+          mono: ['"Space Mono"', 'monospace'],
+        },
+        letterSpacing: { widest2: '0.28em', widest3: '0.4em' },
+      }
+    }
+  }
+</script>
+
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:#0B0B0B;color:#EDEAE2;font-family:'Schibsted Grotesk',sans-serif;}
+  ::selection{background:#C9A24B;color:#0B0B0B}
+
+  /* ---------- Focus & skip link ---------- */
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+    outline:2px solid #C9A24B; outline-offset:3px; border-radius:2px;
+  }
+  .skip-link{
+    position:absolute; left:-9999px; top:0; background:#C9A24B; color:#0B0B0B;
+    padding:.85rem 1.4rem; font-weight:600; z-index:9999;
+  }
+  .skip-link:focus{ left:1rem; top:1rem; }
+
+  /* ---------- Scrollbar ---------- */
+  ::-webkit-scrollbar{width:9px}
+  ::-webkit-scrollbar-track{background:#0B0B0B}
+  ::-webkit-scrollbar-thumb{background:#2a251c;border-radius:10px}
+  ::-webkit-scrollbar-thumb:hover{background:#C9A24B}
+
+  /* ---------- Preloader / countdown leader ---------- */
+  #preloader{
+    position:fixed; inset:0; background:#0B0B0B; z-index:9998;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:1.5rem;
+    transition:opacity .5s ease .1s;
+  }
+  #preloader.done{ opacity:0; pointer-events:none; }
+  .leader-circle{ position:relative; width:110px; height:110px; }
+  .leader-circle svg{ width:100%; height:100%; }
+  #leaderSweep{ transition: stroke-dashoffset 1.5s linear; }
+  .leader-number{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:'Bodoni Moda',serif; font-size:2.75rem; font-weight:500; color:#EDEAE2;
+  }
+  .leader-label{
+    font-family:'Space Mono',monospace; font-size:.65rem; letter-spacing:.35em; text-transform:uppercase; color:#96897A;
+  }
+  .cue-dot{
+    position:fixed; top:28px; right:28px; width:14px; height:14px; border-radius:50%;
+    background:#C9A24B; opacity:0; z-index:9999; pointer-events:none;
+  }
+  .cue-dot.flash{ animation:cueFlash .5s ease-out; }
+  @keyframes cueFlash{ 0%{opacity:0} 30%{opacity:1} 100%{opacity:0} }
+  .shutter{ position:fixed; left:0; right:0; background:#0B0B0B; z-index:9997; transition:transform .9s cubic-bezier(.76,0,.24,1); }
+  .shutter-top{ top:0; height:50%; }
+  .shutter-bottom{ bottom:0; height:50%; }
+  .shutters-open .shutter-top{ transform:translateY(-100%); }
+  .shutters-open .shutter-bottom{ transform:translateY(100%); }
+
+  /* ---------- Viewfinder cursor ---------- */
+  .viewfinder{
+    position:fixed; top:0; left:0; width:46px; height:46px; pointer-events:none;
+    z-index:60; transform:translate(-50%,-50%); opacity:0;
+    transition:width .25s cubic-bezier(.2,1,.4,1), height .25s cubic-bezier(.2,1,.4,1), opacity .3s ease;
+  }
+  .viewfinder.active{ opacity:.6; }
+  .viewfinder.locked{ width:26px; height:26px; opacity:1; }
+  .vf-corner{ position:absolute; width:10px; height:10px; transition:border-color .25s ease; }
+  .vf-tl{ top:0; left:0; border-top:1.5px solid #EDEAE2; border-left:1.5px solid #EDEAE2; }
+  .vf-tr{ top:0; right:0; border-top:1.5px solid #EDEAE2; border-right:1.5px solid #EDEAE2; }
+  .vf-bl{ bottom:0; left:0; border-bottom:1.5px solid #EDEAE2; border-left:1.5px solid #EDEAE2; }
+  .vf-br{ bottom:0; right:0; border-bottom:1.5px solid #EDEAE2; border-right:1.5px solid #EDEAE2; }
+  .viewfinder.locked .vf-tl, .viewfinder.locked .vf-tr, .viewfinder.locked .vf-bl, .viewfinder.locked .vf-br{ border-color:#C9A24B; }
+  html.has-vf, html.has-vf a, html.has-vf button, html.has-vf .magnetic{ cursor:none; }
+
+  /* ---------- Grain ---------- */
+  #grain{
+    position:fixed; inset:0; z-index:50; pointer-events:none; opacity:.045; mix-blend-mode:overlay;
+    background-repeat:repeat; animation:grainShift .5s steps(6) infinite;
+  }
+  @keyframes grainShift{
+    0%,100%{transform:translate(0,0)} 20%{transform:translate(-1.5%,1.5%)}
+    40%{transform:translate(1.5%,-1%)} 60%{transform:translate(-1%,-1.5%)} 80%{transform:translate(1.5%,1%)}
+  }
+
+  /* ---------- Reel HUD ---------- */
+  #reelHud{
+    position:fixed; left:1.25rem; bottom:1.25rem; z-index:45; display:flex; align-items:center; gap:.6rem;
+    font-size:.65rem; letter-spacing:.15em; text-transform:uppercase; color:#96897A;
+    background:rgba(11,11,11,.55); border:1px solid rgba(237,234,226,.1); backdrop-filter:blur(8px);
+    padding:.5rem .85rem; border-radius:999px;
+  }
+  .hud-dot{ width:6px; height:6px; border-radius:50%; background:#C9724A; background:#d2453f; animation:hudPulse 1.8s ease-in-out infinite; flex-shrink:0; }
+  @keyframes hudPulse{ 0%,100%{opacity:1} 50%{opacity:.25} }
+  #hudReel{ color:#EDEAE2; }
+
+  /* ---------- Reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(36px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+  .reveal-d1{ transition-delay:.08s } .reveal-d2{ transition-delay:.16s } .reveal-d3{ transition-delay:.24s } .reveal-d4{ transition-delay:.32s }
+
+  /* ---------- Reel kicker line ---------- */
+  .reel-line{ display:inline-block; width:0; height:1px; background:linear-gradient(90deg,#C9A24B,transparent); transition:width 1s cubic-bezier(.16,1,.3,1) .15s; vertical-align:middle; }
+  .reveal.is-visible .reel-line{ width:56px; }
+
+  /* ---------- Glass ---------- */
+  .glass{ background:rgba(21,21,21,.55); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid rgba(237,234,226,.08); }
+
+  /* ---------- Magnetic ---------- */
+  .magnetic{ transition:transform .35s cubic-bezier(.2,1,.3,1); display:inline-flex; }
+
+  /* ---------- Slate marquee ---------- */
+  .slate-track{ display:flex; width:max-content; animation:marquee 34s linear infinite; }
+  .slate-track:hover{ animation-play-state:paused; }
+  @keyframes marquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .clients-track{ display:flex; width:max-content; animation:marquee 46s linear infinite; }
+  .clients-track:hover{ animation-play-state:paused; }
+  .clients-track-rev{ animation-direction:reverse; }
+
+  /* ---------- Timeline ---------- */
+  .timeline-rail{ position:absolute; left:15px; top:0; bottom:0; width:1px; background:linear-gradient(to bottom, transparent, rgba(201,162,75,.45), transparent); }
+  @media(min-width:768px){ .timeline-rail{ left:50%; } }
+  .timeline-dot{ position:absolute; left:15px; width:9px; height:9px; border-radius:50%; background:#C9A24B; transform:translate(-4px,6px); box-shadow:0 0 0 4px rgba(11,11,11,1), 0 0 0 5px rgba(201,162,75,.3); }
+  @media(min-width:768px){ .timeline-dot{ left:50%; } }
+
+  /* ---------- Project card tilt ---------- */
+  .project-card{ transition:transform .2s ease-out; transform-style:preserve-3d; will-change:transform; }
+
+  /* ---------- Sprocket strip (contact sheet) ---------- */
+  .sprocket{
+    height:20px; background-color:#1C1A16;
+    background-image:radial-gradient(circle,#0B0B0B 42%,transparent 43%);
+    background-size:26px 20px; background-position:13px center; background-repeat:repeat-x;
+  }
+
+  /* ---------- Mobile menu ---------- */
+  #mobileMenu{ transform:translateX(100%); transition:transform .5s cubic-bezier(.76,0,.24,1); }
+  #mobileMenu.open{ transform:translateX(0); }
+
+  /* ---------- Reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *,*::before,*::after{ animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+    .reveal{ opacity:1 !important; transform:none !important; }
+    #grain{ display:none; }
+  }
+</style>
+</head>
+<body class="antialiased">
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ============ PRELOADER ============ -->
+<div id="preloader" aria-hidden="true">
+  <div class="leader-circle">
+    <svg viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="52" fill="none" stroke="#1C1A16" stroke-width="1"/>
+      <circle id="leaderSweep" cx="60" cy="60" r="52" fill="none" stroke="#C9A24B" stroke-width="1.5"
+        stroke-dasharray="326.7" stroke-dashoffset="326.7" transform="rotate(-90 60 60)"/>
+      <line x1="60" y1="2" x2="60" y2="12" stroke="#96897A" stroke-width="1"/>
+      <line x1="60" y1="108" x2="60" y2="118" stroke="#96897A" stroke-width="1"/>
+      <line x1="2" y1="60" x2="12" y2="60" stroke="#96897A" stroke-width="1"/>
+      <line x1="108" y1="60" x2="118" y2="60" stroke="#96897A" stroke-width="1"/>
+    </svg>
+    <span class="leader-number" id="leaderNumber">3</span>
+  </div>
+  <p class="leader-label">Rajnish Vinodia — Showreel Loading</p>
+</div>
+<span class="cue-dot" id="cueDot"></span>
+<div class="shutter shutter-top"></div>
+<div class="shutter shutter-bottom"></div>
+
+<!-- ============ CURSOR / GRAIN / HUD ============ -->
+<div class="viewfinder" id="viewfinder" aria-hidden="true">
+  <span class="vf-corner vf-tl"></span><span class="vf-corner vf-tr"></span>
+  <span class="vf-corner vf-bl"></span><span class="vf-corner vf-br"></span>
+</div>
+<div id="grain" aria-hidden="true"></div>
+<div id="reelHud" class="font-mono" aria-hidden="true">
+  <span class="hud-dot"></span><span id="hudReel">REEL 01 — ORIGIN</span><span>/</span><span id="hudTime">00:00</span>
+</div>
+
+<!-- ============ NAV ============ -->
+<header id="siteNav" class="fixed top-0 inset-x-0 z-40 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between h-20">
+    <a href="#hero" data-scroll class="magnetic font-display text-lg text-bone">Rajnish<span class="text-gold">.</span></a>
+    <nav aria-label="Primary" class="hidden lg:block">
+      <ul class="flex items-center gap-9 text-sm text-bone/75">
+        <li><a href="#about" data-scroll class="magnetic hover:text-gold transition-colors">About</a></li>
+        <li><a href="#journey" data-scroll class="magnetic hover:text-gold transition-colors">Journey</a></li>
+        <li><a href="#work" data-scroll class="magnetic hover:text-gold transition-colors">Work</a></li>
+        <li><a href="#pitara" data-scroll class="magnetic hover:text-gold transition-colors">Pitara Filmz</a></li>
+        <li><a href="#skills" data-scroll class="magnetic hover:text-gold transition-colors">Skills</a></li>
+        <li><a href="#gallery" data-scroll class="magnetic hover:text-gold transition-colors">Contact Sheet</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" data-scroll class="magnetic hidden lg:inline-flex items-center gap-2 rounded-full border border-gold/40 px-5 py-2.5 text-sm text-gold hover:bg-gold hover:text-ink transition-colors duration-300">Contact</a>
+    <button id="menuToggle" class="lg:hidden text-bone p-2 -mr-2" aria-label="Open menu" aria-expanded="false">
+      <svg id="menuIcon" width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7H20M4 12H20M4 17H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+<div id="mobileMenu" class="fixed inset-0 z-50 bg-ink/98 backdrop-blur-lg flex flex-col items-center justify-center gap-7 lg:hidden">
+  <a href="#about" data-scroll class="font-display text-3xl text-bone">About</a>
+  <a href="#journey" data-scroll class="font-display text-3xl text-bone">Journey</a>
+  <a href="#work" data-scroll class="font-display text-3xl text-bone">Work</a>
+  <a href="#pitara" data-scroll class="font-display text-3xl text-bone">Pitara Filmz</a>
+  <a href="#skills" data-scroll class="font-display text-3xl text-bone">Skills</a>
+  <a href="#gallery" data-scroll class="font-display text-3xl text-bone">Contact Sheet</a>
+  <a href="#contact" data-scroll class="font-display text-3xl text-gold italic">Final Cut</a>
+</div>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section id="hero" class="relative min-h-screen flex flex-col justify-center overflow-hidden px-6 md:px-10">
+    <div id="heroGlow" class="pointer-events-none absolute -z-10 w-[640px] h-[640px] rounded-full blur-[130px] opacity-[.35]" style="background:radial-gradient(circle,#E8834A,transparent 70%); left:50%; top:40%;"></div>
+    <div class="absolute inset-0 -z-20 bg-[radial-gradient(ellipse_at_top,rgba(201,162,75,0.08),transparent_60%)]"></div>
+
+    <p class="reveal font-mono text-[11px] md:text-xs tracking-widest2 uppercase text-gold/85 mb-6">Creative Director — Filmmaker — Director of Photography</p>
+
+    <h1 class="reveal font-display text-[16vw] sm:text-[13vw] md:text-[10vw] lg:text-[7.5vw] xl:text-[108px] leading-[0.94] text-bone font-bold">
+      Rajnish<br><span class="italic text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-ember">Vinodia</span>
+    </h1>
+
+    <div class="reveal reveal-d1 mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-bone/55 text-sm md:text-base">
+      <span id="rotatingTitle" class="text-bone" aria-hidden="true">Senior Video Editor</span>
+      <span class="sr-only">Also: Creative Director, Director of Photography, Filmmaker</span>
+      <span class="hidden sm:inline text-smoke">·</span>
+      <span>Jabalpur, MP — based in Raipur</span>
+      <span class="hidden sm:inline text-smoke">·</span>
+      <span>6+ Years</span>
+    </div>
+
+    <div class="reveal reveal-d2 mt-12 flex items-center gap-7 flex-wrap">
+      <a href="#work" data-scroll class="magnetic group inline-flex items-center gap-3 rounded-full bg-gold text-ink px-7 py-3.5 font-medium hover:bg-gold-light transition-colors">
+        View the Work
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" class="transition-transform group-hover:translate-x-1"><path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#contact" data-scroll class="magnetic text-bone/70 hover:text-gold underline underline-offset-4 decoration-gold/30">Get in touch</a>
+    </div>
+
+    <div class="reveal reveal-d3 absolute bottom-10 left-6 md:left-10 flex items-center gap-3 text-bone/40 text-[11px] tracking-widest2 uppercase font-mono">
+      <span class="w-8 h-px bg-bone/30"></span> Roll Camera
+    </div>
+  </section>
+
+  <!-- ============ SLATE MARQUEE ============ -->
+  <div class="border-y border-white/[.07] py-4 overflow-hidden">
+    <div class="slate-track font-mono text-[11px] md:text-xs tracking-widest2 uppercase text-smoke gap-10 flex">
+      <span class="flex gap-10 shrink-0">
+        <span>Prod. Rajnish Vinodia</span><span class="text-gold/60">·</span>
+        <span>Dir. of Photography</span><span class="text-gold/60">·</span>
+        <span>Roll A</span><span class="text-gold/60">·</span>
+        <span>Est. Jabalpur</span><span class="text-gold/60">·</span>
+        <span>Now Rolling —</span><span class="text-gold/60">·</span>
+      </span>
+      <span class="flex gap-10 shrink-0" aria-hidden="true">
+        <span>Prod. Rajnish Vinodia</span><span class="text-gold/60">·</span>
+        <span>Dir. of Photography</span><span class="text-gold/60">·</span>
+        <span>Roll A</span><span class="text-gold/60">·</span>
+        <span>Est. Jabalpur</span><span class="text-gold/60">·</span>
+        <span>Now Rolling —</span><span class="text-gold/60">·</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- ============ ABOUT — REEL 01 ============ -->
+  <section id="about" class="relative py-28 md:py-40 px-6 md:px-10">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-12 gap-10 md:gap-8">
+      <div class="md:col-span-4">
+        <div class="md:sticky md:top-32">
+          <span class="reveal font-mono text-xs tracking-widest2 uppercase text-gold/85 flex items-center gap-4">Reel 01<span class="reel-line"></span></span>
+          <h2 class="reveal font-display text-4xl md:text-5xl mt-4 text-bone">The Origin</h2>
+        </div>
+      </div>
+      <div class="md:col-span-8 space-y-6">
+        <p class="reveal font-display italic text-2xl md:text-3xl leading-snug text-bone">"I am a filmmaker who believes stories can inspire people."</p>
+        <p class="reveal reveal-d1 text-bone/60 leading-relaxed text-lg">My expertise spans filmmaking, cinematography, creative direction and post-production — the full arc of visual storytelling, not just the cut. I'd rather build an emotional story than simply edit a video.</p>
+        <p class="reveal reveal-d2 text-bone/60 leading-relaxed text-lg">Over six-plus years I've worked with luxury brands, government ministries, music labels, production houses and startups — leading teams, developing concepts, building mood boards, storyboarding campaigns, directing shoots, and staying on until final delivery. I'm constantly exploring AI tools and emerging technology to push the craft further.</p>
+        <div class="reveal reveal-d3 grid grid-cols-2 sm:grid-cols-4 gap-6 pt-8 border-t border-white/10 mt-8">
+          <div><p class="font-display text-3xl text-gold">6+</p><p class="text-[11px] uppercase tracking-widest2 text-bone/40 mt-1">Years Behind the Lens</p></div>
+          <div><p class="font-display text-3xl text-gold">15+</p><p class="text-[11px] uppercase tracking-widest2 text-bone/40 mt-1">Marquee Productions</p></div>
+          <div><p class="font-display text-3xl text-gold">3</p><p class="text-[11px] uppercase tracking-widest2 text-bone/40 mt-1">Studios Called Home</p></div>
+          <div><p class="font-display text-3xl text-gold">∞</p><p class="text-[11px] uppercase tracking-widest2 text-bone/40 mt-1">Frames, Uncounted</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ JOURNEY — REEL 02 (rendered by JS) ============ -->
+  <section id="journey" class="relative py-28 md:py-40 px-6 md:px-10 bg-charcoal/40">
+    <div class="max-w-5xl mx-auto">
+      <span class="reveal font-mono text-xs tracking-widest2 uppercase text-gold/85 flex items-center gap-4 justify-center">Reel 02<span class="reel-line"></span></span>
+      <h2 class="reveal font-display text-4xl md:text-6xl mt-4 text-center text-bone">The Journey</h2>
+      <div id="timelineTrack" class="relative mt-20 md:mt-24"></div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED WORK — REEL 03 ============ -->
+  <section id="work" class="relative py-28 md:py-40 px-6 md:px-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+        <div>
+          <span class="reveal font-mono text-xs tracking-widest2 uppercase text-gold/85 flex items-center gap-4">Reel 03<span class="reel-line"></span></span>
+          <h2 class="reveal font-display text-4xl md:text-6xl mt-4 text-bone">The Work</h2>
+        </div>
+        <div id="filterTabs" class="reveal flex flex-wrap gap-2"></div>
+      </div>
+      <div id="projectsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-14"></div>
+    </div>
+  </section>
+
+  <!-- ============ PITARA FILMZ — REEL 04 ============ -->
+  <section id="pitara" class="relative py-28 md:py-40 px-6 md:px-10 overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-charcoal to-ink"></div>
+    <div class="absolute -right-40 top-1/4 w-[520px] h-[520px] rounded-full blur-[150px] opacity-[.18] bg-ember -z-10"></div>
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="reveal font-mono text-xs tracking-widest2 uppercase text-gold/85 flex items-center gap-4 justify-center">Reel 04<span class="reel-line"></span></span>
+      <h2 class="reveal font-display text-4xl md:text-6xl mt-6 text-bone">Building something<br>of my <span class="italic text-gold">own</span>.</h2>
+      <p class="reveal reveal-d1 mt-8 text-bone/60 text-lg max-w-2xl mx-auto">At <span class="text-bone font-medium">Pitara Filmz</span>, I work as Creative Head, Director of Photography, Senior Editor and Creative Strategist — shaping projects from concept through to final grade.</p>
+      <div class="reveal reveal-d2 mt-14 glass rounded-3xl p-8 md:p-14 text-left max-w-3xl mx-auto">
+        <p class="text-xs uppercase tracking-widest2 text-gold font-mono mb-4">Currently in Production</p>
+        <h3 class="font-display text-3xl md:text-4xl mb-4 text-bone">Dharohar</h3>
+        <p class="text-bone/60 leading-relaxed">A cinematic cultural project documenting the traditions, music, folk art, languages and heritage of Madhya Pradesh — a long-form ode to the state I call home.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS — REEL 05 ============ -->
+  <section id="skills" class="relative py-28 md:py-40 px-6 md:px-10">
+    <div class="max-w-6xl mx-auto">
+      <span class="reveal font-mono text-xs tracking-widest2 uppercase text-gold/85 flex items-center gap-4">Reel 05<span class="reel-line"></span></span>
+      <h2 class="reveal font-display text-4xl md:text-6xl mt-4 text-bone">The Craft</h2>
+      <div id="skillsGrid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 mt-16"></div>
+    </div>
+  </section>
+
+  <!-- ============ CLIENTS — REEL 06 ============ -->
+  <section id="clients" class="relative py-24 md:py-32 border-y border-white/[.07] bg-charcoal/40">
+    <div class="max-w-7xl mx-auto px-6 md:px-10">
+      <span class="reveal font-mono text-xs tracking-widest2 uppercase text-gold/85 flex items-center gap-4 justify-center mb-14">Reel 06 — Trusted By<span class="reel-line"></span></span>
+    </div>
+    <div class="overflow-hidden py-2">
+      <div id="clientsTrackA" class="clients-track font-display text-2xl md:text-4xl text-bone/25 gap-14"></div>
+    </div>
+    <div class="overflow-hidden py-2 mt-4">
+      <div id="clientsTrackB" class="clients-track clients-track-rev font-display text-2xl md:text-4xl text-bone/25 gap-14"></div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT SHEET (GALLERY) — REEL 07 ============ -->
+  <section id="gallery" class="relative">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 pt-28 md:pt-40 pb-10">
+      <span class="reveal font-mono text-xs tracking-widest2 uppercase text-gold/85 flex items-center gap-4">Reel 07<span class="reel-line"></span></span>
+      <h2 class="reveal font-display text-4xl md:text-6xl mt-4 text-bone">Contact Sheet</h2>
+      <p class="reveal reveal-d1 mt-4 text-bone/50 max-w-md">A strip of frames from the work — weddings, ministries, music sets and everything shot in between.</p>
+    </div>
+    <div class="sprocket" aria-hidden="true"></div>
+    <div id="galleryWrap" class="relative">
+      <div id="galleryViewport">
+        <div id="galleryTrack" class="flex gap-5 px-6 md:px-10 py-10 w-max"></div>
+      </div>
+    </div>
+    <div class="sprocket" aria-hidden="true"></div>
+  </section>
+
+  <!-- ============ FINAL CUT (CONTACT) ============ -->
+  <section id="contact" class="relative py-32 md:py-48 px-6 md:px-10 text-center overflow-hidden">
+    <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_bottom,rgba(201,162,75,0.10),transparent_60%)]"></div>
+    <span class="reveal font-mono text-xs tracking-widest2 uppercase text-gold/85 flex items-center gap-4 justify-center">Final Cut<span class="reel-line"></span></span>
+    <h2 class="reveal reveal-d1 font-display text-5xl md:text-8xl mt-6 text-bone">Let's tell<br><span class="italic text-gold">your</span> story.</h2>
+    <p class="reveal reveal-d2 mt-8 text-bone/55 max-w-xl mx-auto text-lg">Available for commissions, campaigns and collaborations — government, luxury and independent.</p>
+    <div class="reveal reveal-d3 mt-12">
+      <a href="mailto:rajnishvinodia48@gmail.com" class="magnetic font-display italic text-2xl md:text-4xl text-bone border-b border-gold/40 hover:border-gold hover:text-gold transition-colors pb-1">rajnishvinodia48@gmail.com</a>
+    </div>
+    <div class="reveal reveal-d4 mt-10 flex items-center justify-center gap-8 text-bone/50 text-sm tracking-widest2 uppercase flex-wrap font-mono text-xs">
+      <a href="https://www.linkedin.com/in/rajnish-vinodia-69a65b232" class="magnetic hover:text-gold transition-colors">rajnish-vinodia</a>
+      <a href="https://www.instagram.com/rajnish.vinodia/" class="magnetic hover:text-gold transition-colors">@rajnishvinodia</a>
+      <a href="https://drive.google.com/drive/folders/1wZqzzEmTyMDkirnZxoHAfEC9bv8teNSA" class="magnetic hover:text-gold transition-colors">My Portfolio</a>
+      <a href="tel:+917723037337" class="magnetic hover:text-gold transition-colors">77230 37337</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="border-t border-white/[.07] py-10 px-6 md:px-10">
+  <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-bone/35 tracking-wide font-mono">
+    <p>©️ 2026 Rajnish Vinodia. All frames reserved.</p>
+    <p>Jabalpur × Raipur</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ============ ENVIRONMENT FLAGS ============ */
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var enableRich = hasFinePointer && !prefersReduced;
+  var isDesktop = window.innerWidth >= 1024;
+
+  /* ============ DATA ============ */
+  var timeline = [
+    { phase:"Where It Started", role:"Director of Photography", org:"Creative Karma", desc:"Freelance DP work including the Raaga Taala Festival in Jodhpur, and devotional music videos for artists like Maanya Arora.", tags:["Freelance","DOP"] },
+    { phase:"Building The Craft", role:"Senior Video Editor", org:"VsnapU", desc:"Team lead and creative lead — managing editors, designing mood boards and client communication across luxury weddings and industrial clients including Tata Steel and PKEB Mines.", tags:["Leadership","Weddings"] },
+    { phase:"Now", role:"Video Editor", org:"Limelight Corp", desc:"Editing large-scale government and institutional productions — the WHO Ayurveda Summit, Ministry of AYUSH, Unity March and the Viksit Bharat Young Leaders' Dialogue.", tags:["Government","Live Events"] },
+    { phase:"Now — Building My Own", role:"Creative Head, DOP & Senior Editor", org:"Pitara Filmz", desc:"Founding a studio of my own — currently directing Dharohar, a cultural documentary series on the heritage of Madhya Pradesh.", tags:["Founder","Dharohar"] }
+  ];
+
+  /* ============ MEDIA ASSETS ============
+     Create these two folders next to this HTML file, then drop your files in with matching
+     names (or just edit the path strings below to point wherever you keep them):
+       assets/work/<name>.jpg    — cover still for each Work card. Landscape, 1280x800px or bigger.
+       assets/work/<name>.mp4    — optional hover-preview clip. Muted, looping, 5-15s, H.264 mp4,
+                                    keep it light (under ~5MB) since it loads on hover.
+       assets/gallery/<name>.jpg — Contact Sheet stills. Portrait-friendly, 1000x1400px or bigger.
+     Nothing breaks if a file isn't there yet — the card quietly keeps today's gradient until you
+     add it. Once a project has a real video, update its "duration" below to match (it drives the
+     timecode badge that appears on hover); cards without a video won't show that badge at all. */
+  var projects = [
+    { cat:"government", tag:"Government & Institutional", title:"WHO Ayurveda Summit", desc:"Live production coverage for the WHO Global Summit on Traditional Medicine, produced with the Ministry of AYUSH.", img:"assets/work/who-ayurveda-summit.jpg", video:"assets/work/who-ayurveda-summit.mp4", duration:"00:14" },
+    { cat:"government", tag:"Government & Institutional", title:"Unity March", desc:"Large-format event film for one of the season's biggest public mobilisation campaigns.", img:"assets/work/unity-march.jpg", video:"assets/work/unity-march.mp4", duration:"00:14" },
+    { cat:"government", tag:"Government & Institutional", title:"Viksit Bharat — Young Leaders' Dialogue", desc:"Documentation and edit for a national dialogue platform convening India's young leaders.", img:"assets/work/viksit-bharat-dialogue.jpg", video:"assets/work/viksit-bharat-dialogue.mp4", duration:"00:14" },
+    { cat:"weddings", tag:"Luxury Weddings", title:"Palace Wedding Films", desc:"Cinematic wedding films shot and edited across The Leela Palace, Taj Hotels, Rambagh Palace, St Regis and W Goa.", img:"assets/work/palace-wedding-films.jpg", video:"assets/work/palace-wedding-films.mp4", duration:"00:14" },
+    { cat:"music", tag:"Music & Artists", title:"Song Craft — Season 1", desc:"A full season of studio sessions featuring Javed Ali, Hariharan, Rekha Bhardwaj, Anandi Joshi, Anusha Mani, Vijay Prakash and Abhay Jodhpurkar.", img:"assets/work/song-craft-season-1.jpg", video:"assets/work/song-craft-season-1.mp4", duration:"00:14" },
+    { cat:"music", tag:"Music & Artists", title:"Raaga Taala Festival", desc:"Director of Photography for Jodhpur's Raaga Taala Festival, produced with Saregama, Times Music and Merchant Records.", img:"assets/work/raaga-taala-festival.jpg", video:"assets/work/raaga-taala-festival.mp4", duration:"00:14" },
+    { cat:"industrial", tag:"Industrial & Corporate", title:"Tata Steel", desc:"Corporate and industrial storytelling for one of India's largest steel manufacturers.", img:"assets/work/tata-steel.jpg", video:"assets/work/tata-steel.mp4", duration:"00:14" },
+    { cat:"industrial", tag:"Industrial & Corporate", title:"PKEB Mines", desc:"On-ground industrial documentation and campaign editing.", img:"assets/work/pkeb-mines.jpg", video:"assets/work/pkeb-mines.mp4", duration:"00:14" },
+    { cat:"creative", tag:"Creative Direction", title:"Dharohar", desc:"A Pitara Filmz original — documenting the traditions, music, folk art and languages of Madhya Pradesh.", img:"assets/work/dharohar.jpg", video:"assets/work/dharohar.mp4", duration:"00:14" }
+  ];
+
+  var filters = [
+    {key:"all", label:"All Work"}, {key:"government", label:"Government"}, {key:"weddings", label:"Weddings"},
+    {key:"music", label:"Music"}, {key:"industrial", label:"Industrial"}, {key:"creative", label:"Creative Direction"}
+  ];
+
+  var skillGroups = [
+    { group:"Creative & Direction", items:["Creative Direction","Film Direction","Cinematography","Drone Planning","Storyboarding"] },
+    { group:"Post-Production", items:["Video Editing","Color Grading","Motion Graphics","Sound Design","Premiere Pro","After Effects","DaVinci Resolve","Photoshop","Lightroom"] },
+    { group:"AI & Emerging Tools", items:["AI Video Workflow","Runway","Adobe Firefly"] },
+    { group:"Leadership", items:["Leadership","Project Management","Photography"] }
+  ];
+
+  var clients = ["Ministry of AYUSH","World Health Organization","Ministry of Youth Affairs","Tata Steel","PKEB Mines","T-Series","Saregama","Times Music","Merchant Records","The Leela Palace","Taj Hotels","Rambagh Palace","W Goa","St Regis"];
+
+  var galleryItems = [
+    {cat:"Weddings", title:"Palace Wedding Films", img:"assets/gallery/palace-wedding-films.jpg"},
+    {cat:"Government", title:"WHO Ayurveda Summit", img:"assets/gallery/who-ayurveda-summit.jpg"},
+    {cat:"Music", title:"Song Craft — Season 1", img:"assets/gallery/song-craft-season-1.jpg"},
+    {cat:"Behind the Scenes", title:"On Set, Raaga Taala Festival", img:"assets/gallery/on-set-raaga-taala-festival.jpg"},
+    {cat:"Government", title:"Viksit Bharat Dialogue", img:"assets/gallery/viksit-bharat-dialogue.jpg"},
+    {cat:"Weddings", title:"Rambagh Palace, Jaipur", img:"assets/gallery/rambagh-palace-jaipur.jpg"},
+    {cat:"Photography", title:"Travel & Documentary Stills", img:"assets/gallery/travel-documentary-stills.jpg"},
+    {cat:"Music", title:"Devotional Series — Maanya Arora", img:"assets/gallery/devotional-series-maanya-arora.jpg"}
+  ];
+
+  var reels = [
+    {id:"about", label:"REEL 01 — ORIGIN"}, {id:"journey", label:"REEL 02 — THE JOURNEY"},
+    {id:"work", label:"REEL 03 — THE WORK"}, {id:"pitara", label:"REEL 04 — PITARA FILMZ"},
+    {id:"skills", label:"REEL 05 — THE CRAFT"}, {id:"clients", label:"REEL 06 — TRUSTED BY"},
+    {id:"gallery", label:"REEL 07 — CONTACT SHEET"}, {id:"contact", label:"FINAL CUT"}
+  ];
+
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  /* ============ RENDER ============ */
+  function renderTimeline(){
+    var track = document.getElementById('timelineTrack');
+    var html = '<div class="timeline-rail"></div>';
+    timeline.forEach(function(item, i){
+      var side = i % 2 === 0 ? 'md:pr-[52%]' : 'md:pl-[52%]';
+      var align = i % 2 === 0 ? 'md:text-right' : 'md:text-left';
+      html += '<div class="reveal relative pl-10 md:pl-0 ' + side + ' mb-14 md:mb-20">' +
+        '<span class="timeline-dot"></span>' +
+        '<div class="glass rounded-2xl p-6 md:p-7 ' + align + '">' +
+          '<p class="font-mono text-[10px] tracking-widest2 uppercase text-gold/80">' + esc(item.phase) + '</p>' +
+          '<h3 class="font-display text-xl md:text-2xl text-bone mt-2">' + esc(item.role) + '</h3>' +
+          '<p class="text-sm text-gold/90 mt-0.5">' + esc(item.org) + '</p>' +
+          '<p class="text-bone/55 text-sm leading-relaxed mt-3">' + esc(item.desc) + '</p>' +
+          '<div class="flex gap-2 mt-4 flex-wrap ' + (i % 2 === 0 ? 'md:justify-end' : '') + '">' +
+            item.tags.map(function(t){ return '<span class="text-[10px] uppercase tracking-widest2 border border-gold/25 text-gold/80 rounded-full px-3 py-1">' + esc(t) + '</span>'; }).join('') +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    });
+    track.innerHTML = html;
+  }
+
+  function projectCard(p){
+    var mediaImg = p.img ? '<img src="' + esc(p.img) + '" alt="' + esc(p.title) + ' — cover still" loading="lazy" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" onerror="this.style.display=\'none\'">' : '';
+    var mediaVideo = p.video ? '<video class="media-preview absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" muted loop playsinline preload="metadata" onerror="this.style.display=\'none\'"><source src="' + esc(p.video) + '" type="video/mp4"></video>' : '';
+    var durationBadge = p.video ? '<span class="absolute bottom-4 right-4 font-mono text-[10px] text-bone/70 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center gap-1.5">' +
+        '<svg width="10" height="10" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/><path d="M10 8L16 12L10 16V8Z" fill="currentColor"/></svg> ' + esc(p.duration || '00:00') +
+      '</span>' : '';
+    return '<div class="project-card group relative overflow-hidden rounded-2xl border border-white/10 bg-charcoal2/70" data-cat="' + p.cat + '">' +
+      '<div class="relative h-64 overflow-hidden">' +
+        '<div class="absolute inset-0 bg-gradient-to-br from-[#2a2014] via-[#17150f] to-[#0b0b0b] transition-transform duration-700 group-hover:scale-110"></div>' +
+        mediaImg + mediaVideo +
+        '<div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/85 to-transparent"></div>' +
+        '<span class="absolute top-4 left-4 text-[10px] tracking-widest2 uppercase text-gold/90 border border-gold/30 rounded-full px-3 py-1 bg-black/40">' + esc(p.tag) + '</span>' +
+        durationBadge +
+      '</div>' +
+      '<div class="p-6">' +
+        '<h3 class="font-display text-xl text-bone">' + esc(p.title) + '</h3>' +
+        '<p class="text-sm text-bone/50 mt-2 leading-relaxed">' + esc(p.desc) + '</p>' +
+      '</div>' +
+    '</div>';
+  }
+
+  function renderProjects(filterKey){
+    var grid = document.getElementById('projectsGrid');
+    var list = !filterKey || filterKey === 'all' ? projects : projects.filter(function(p){ return p.cat === filterKey; });
+    grid.innerHTML = list.map(projectCard).join('');
+    if(enableRich){ initTilt(); initVideoPreviews(); }
+  }
+
+  function renderFilters(){
+    var wrap = document.getElementById('filterTabs');
+    wrap.innerHTML = filters.map(function(f, i){
+      return '<button data-filter="' + f.key + '" class="filter-btn magnetic text-xs uppercase tracking-widest2 px-4 py-2 rounded-full border transition-colors ' +
+        (i === 0 ? 'border-gold bg-gold text-ink' : 'border-white/15 text-bone/60 hover:border-gold/50 hover:text-gold') + '">' + esc(f.label) + '</button>';
+    }).join('');
+    wrap.querySelectorAll('.filter-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        wrap.querySelectorAll('.filter-btn').forEach(function(b){ b.className = 'filter-btn magnetic text-xs uppercase tracking-widest2 px-4 py-2 rounded-full border transition-colors border-white/15 text-bone/60 hover:border-gold/50 hover:text-gold'; });
+        btn.className = 'filter-btn magnetic text-xs uppercase tracking-widest2 px-4 py-2 rounded-full border transition-colors border-gold bg-gold text-ink';
+        renderProjects(btn.getAttribute('data-filter'));
+        initMagnetic();
+      });
+    });
+  }
+
+  function renderSkills(){
+    var grid = document.getElementById('skillsGrid');
+    grid.innerHTML = skillGroups.map(function(g, gi){
+      return '<div class="reveal reveal-d' + Math.min(gi+1,4) + '">' +
+        '<p class="font-mono text-[10px] tracking-widest2 uppercase text-gold/80 mb-4">' + esc(g.group) + '</p>' +
+        '<ul class="space-y-2.5">' +
+          g.items.map(function(item){ return '<li class="text-bone/65 text-sm border-b border-white/[.06] pb-2.5">' + esc(item) + '</li>'; }).join('') +
+        '</ul>' +
+      '</div>';
+    }).join('');
+  }
+
+  function renderClients(){
+    var double = clients.concat(clients);
+    var markup = double.map(function(c){ return '<span class="shrink-0">' + esc(c) + '</span>'; }).join('');
+    document.getElementById('clientsTrackA').innerHTML = markup;
+    document.getElementById('clientsTrackB').innerHTML = markup;
+  }
+
+  function renderGallery(){
+    var track = document.getElementById('galleryTrack');
+    track.innerHTML = galleryItems.map(function(g){
+      var media = g.img ? '<img src="' + esc(g.img) + '" alt="' + esc(g.title) + '" loading="lazy" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display=\'none\'">' : '';
+      return '<div class="shrink-0 w-[78vw] sm:w-[42vw] md:w-[30vw] lg:w-[22vw] h-[62vh] md:h-[65vh] rounded-2xl overflow-hidden relative border border-white/10 snap-start" style="background:linear-gradient(155deg,#241d13,#151109 55%,#0b0b0b)">' +
+        media +
+        '<div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/5 to-transparent"></div>' +
+        '<span class="absolute top-5 left-5 text-[10px] font-mono tracking-widest2 uppercase text-gold/85 border border-gold/30 rounded-full px-3 py-1 bg-black/40">' + esc(g.cat) + '</span>' +
+        '<span class="absolute bottom-6 left-6 right-6 font-display text-xl text-bone/90">' + esc(g.title) + '</span>' +
+      '</div>';
+    }).join('');
+  }
+
+  function setupGallery(){
+    var section = document.getElementById('gallery');
+    var wrap = document.getElementById('galleryWrap');
+    var viewport = document.getElementById('galleryViewport');
+    if(isDesktop){
+      section.style.height = (galleryItems.length * 42) + 'vh';
+      wrap.style.position = 'sticky';
+      wrap.style.top = '0';
+      wrap.style.height = '100vh';
+      wrap.style.display = 'flex';
+      wrap.style.alignItems = 'center';
+      viewport.style.overflow = 'hidden';
+      viewport.style.width = '100%';
+    } else {
+      section.style.height = 'auto';
+      wrap.style.position = 'static';
+      wrap.style.height = 'auto';
+      viewport.style.overflowX = 'auto';
+      viewport.style.webkitOverflowScrolling = 'touch';
+      viewport.classList.add('snap-x','snap-mandatory');
+    }
+  }
+
+  /* ============ PRELOADER ============ */
+  function runPreloader(){
+    var pre = document.getElementById('preloader');
+    var sweep = document.getElementById('leaderSweep');
+    var num = document.getElementById('leaderNumber');
+    var cue = document.getElementById('cueDot');
+    var body = document.body;
+    body.style.overflow = 'hidden';
+
+    if(prefersReduced){
+      finishPreloader();
+      return;
+    }
+
+    sweep.style.strokeDashoffset = '0';
+    var counts = [3,2,1];
+    var step = 0;
+    var iv = setInterval(function(){
+      step++;
+      if(step < counts.length){ num.textContent = counts[step]; }
+      else{
+        clearInterval(iv);
+        cue.classList.add('flash');
+        setTimeout(finishPreloader, 350);
+      }
+    }, 480);
+
+    setTimeout(finishPreloader, 4200); // safety fallback
+  }
+
+  var preloaderDone = false;
+  function finishPreloader(){
+    if(preloaderDone) return;
+    preloaderDone = true;
+    document.documentElement.classList.add('shutters-open');
+    var pre = document.getElementById('preloader');
+    pre.classList.add('done');
+    setTimeout(function(){
+      pre.style.display = 'none';
+      document.body.style.overflow = '';
+      triggerHeroReveal();
+    }, prefersReduced ? 0 : 500);
+  }
+
+  function triggerHeroReveal(){
+    document.querySelectorAll('#hero .reveal').forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  /* ============ GRAIN ============ */
+  function initGrain(){
+    if(prefersReduced) return;
+    var canvas = document.createElement('canvas');
+    canvas.width = 180; canvas.height = 180;
+    var ctx = canvas.getContext('2d');
+    var imgData = ctx.createImageData(180,180);
+    for(var i=0;i<imgData.data.length;i+=4){
+      var v = Math.random()*255;
+      imgData.data[i]=v; imgData.data[i+1]=v; imgData.data[i+2]=v; imgData.data[i+3]=Math.random()*60;
+    }
+    ctx.putImageData(imgData,0,0);
+    document.getElementById('grain').style.backgroundImage = 'url(' + canvas.toDataURL() + ')';
+  }
+
+  /* ============ VIEWFINDER CURSOR ============ */
+  function initViewfinder(){
+    if(!enableRich) return;
+    document.documentElement.classList.add('has-vf');
+    var vf = document.getElementById('viewfinder');
+    var x = 0, y = 0, cx = 0, cy = 0;
+    vf.classList.add('active');
+    window.addEventListener('mousemove', function(e){ x = e.clientX; y = e.clientY; }, {passive:true});
+    function loop(){
+      cx += (x-cx)*0.35; cy += (y-cy)*0.35;
+      vf.style.transform = 'translate(' + cx + 'px,' + cy + 'px) translate(-50%,-50%)';
+      requestAnimationFrame(loop);
+    }
+    loop();
+    var lockTargets = 'a, button, .project-card, input, textarea';
+    document.addEventListener('mouseover', function(e){
+      if(e.target.closest && e.target.closest(lockTargets)){ vf.classList.add('locked'); }
+    });
+    document.addEventListener('mouseout', function(e){
+      if(e.target.closest && e.target.closest(lockTargets)){ vf.classList.remove('locked'); }
+    });
+  }
+
+  /* ============ MAGNETIC BUTTONS ============ */
+  function initMagnetic(){
+    if(!enableRich) return;
+    document.querySelectorAll('.magnetic').forEach(function(el){
+      if(el.dataset.magnetBound) return;
+      el.dataset.magnetBound = '1';
+      el.addEventListener('mousemove', function(e){
+        var r = el.getBoundingClientRect();
+        var relX = (e.clientX - r.left - r.width/2) * 0.35;
+        var relY = (e.clientY - r.top - r.height/2) * 0.35;
+        el.style.transform = 'translate(' + relX + 'px,' + relY + 'px)';
+      });
+      el.addEventListener('mouseleave', function(){ el.style.transform = 'translate(0,0)'; });
+    });
+  }
+
+  /* ============ HERO GLOW ============ */
+  function initHeroGlow(){
+    if(!enableRich) return;
+    var hero = document.getElementById('hero');
+    var glow = document.getElementById('heroGlow');
+    var gx = 0, gy = 0, tx = 0, ty = 0;
+    hero.addEventListener('mousemove', function(e){
+      var r = hero.getBoundingClientRect();
+      tx = e.clientX - r.left; ty = e.clientY - r.top;
+    });
+    function loop(){
+      gx += (tx-gx)*0.06; gy += (ty-gy)*0.06;
+      glow.style.transform = 'translate(' + (gx-320) + 'px,' + (gy-320) + 'px)';
+      requestAnimationFrame(loop);
+    }
+    if(tx===0 && ty===0){ var r = hero.getBoundingClientRect(); tx = r.width*0.6; ty = r.height*0.35; }
+    loop();
+  }
+
+  /* ============ 3D TILT ============ */
+  function initTilt(){
+    if(!enableRich) return;
+    document.querySelectorAll('.project-card').forEach(function(card){
+      if(card.dataset.tiltBound) return;
+      card.dataset.tiltBound = '1';
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        var px = (e.clientX - r.left)/r.width - 0.5;
+        var py = (e.clientY - r.top)/r.height - 0.5;
+        card.style.transform = 'perspective(900px) rotateY(' + (px*7) + 'deg) rotateX(' + (-py*7) + 'deg) scale3d(1.015,1.015,1.015)';
+      });
+      card.addEventListener('mouseleave', function(){ card.style.transform = 'perspective(900px) rotateY(0) rotateX(0) scale3d(1,1,1)'; });
+    });
+  }
+
+  /* ============ VIDEO PREVIEW ON HOVER ============ */
+  function initVideoPreviews(){
+    document.querySelectorAll('.project-card').forEach(function(card){
+      var vid = card.querySelector('.media-preview');
+      if(!vid || card.dataset.vidBound) return;
+      card.dataset.vidBound = '1';
+      card.addEventListener('mouseenter', function(){ vid.play().catch(function(){}); });
+      card.addEventListener('mouseleave', function(){ vid.pause(); vid.currentTime = 0; });
+    });
+  }
+
+  /* ============ REVEAL ============ */
+  function initReveal(){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){ entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+      });
+    }, { threshold:0.15, rootMargin:'0px 0px -60px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  }
+
+  /* ============ NAV / SMOOTH SCROLL / MOBILE MENU ============ */
+  function initNav(){
+    var nav = document.getElementById('siteNav');
+    document.querySelectorAll('[data-scroll]').forEach(function(link){
+      link.addEventListener('click', function(e){
+        var id = link.getAttribute('href');
+        if(id && id.charAt(0) === '#' && id.length > 1){
+          var target = document.querySelector(id);
+          if(target){
+            e.preventDefault();
+            target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block:'start' });
+            closeMobileMenu();
+          }
+        }
+      });
+    });
+
+    var toggle = document.getElementById('menuToggle');
+    var menu = document.getElementById('mobileMenu');
+    var menuIcon = document.getElementById('menuIcon');
+    var open = false;
+    toggle.addEventListener('click', function(){
+      open = !open;
+      menu.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      menuIcon.innerHTML = open
+        ? '<path d="M6 6L18 18M6 18L18 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>'
+        : '<path d="M4 7H20M4 12H20M4 17H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>';
+    });
+    function closeMobileMenu(){
+      open = false; menu.classList.remove('open'); toggle.setAttribute('aria-expanded','false');
+      menuIcon.innerHTML = '<path d="M4 7H20M4 12H20M4 17H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>';
+    }
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && open){ closeMobileMenu(); }
+    });
+  }
+
+  /* ============ ROTATING HERO TITLE ============ */
+  function initRotatingTitle(){
+    var titles = ["Senior Video Editor","Creative Director","Director of Photography","Filmmaker"];
+    var el = document.getElementById('rotatingTitle');
+    var i = 0;
+    if(prefersReduced) return;
+    setInterval(function(){
+      el.style.transition = 'opacity .3s ease';
+      el.style.opacity = '0';
+      setTimeout(function(){
+        i = (i+1) % titles.length;
+        el.textContent = titles[i];
+        el.style.opacity = '1';
+      }, 300);
+    }, 2600);
+  }
+
+  /* ============ GALLERY SCROLL PROGRESS (desktop pin) ============ */
+  function updateGalleryScroll(){
+    if(!isDesktop) return;
+    var section = document.getElementById('gallery');
+    var track = document.getElementById('galleryTrack');
+    var rect = section.getBoundingClientRect();
+    var scrollable = section.offsetHeight - window.innerHeight;
+    if(scrollable <= 0) return;
+    var progress = Math.min(Math.max(-rect.top/scrollable, 0), 1);
+    var maxTranslate = Math.max(track.scrollWidth - window.innerWidth + 80, 0);
+    track.style.transform = 'translateX(-' + (progress*maxTranslate) + 'px)';
+  }
+
+  /* ============ TIMECODE HUD ============ */
+  var hudReelEl, hudTimeEl;
+  function updateHud(){
+    var scrollTop = window.scrollY;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var progress = docHeight > 0 ? Math.min(Math.max(scrollTop/docHeight,0),1) : 0;
+    var totalSeconds = 42*60;
+    var current = Math.floor(progress*totalSeconds);
+    var mm = String(Math.floor(current/60)).padStart(2,'0');
+    var ss = String(current%60).padStart(2,'0');
+    var activeLabel = reels[0].label;
+    for(var i=0;i<reels.length;i++){
+      var el = document.getElementById(reels[i].id);
+      if(el){
+        var rect = el.getBoundingClientRect();
+        if(rect.top <= window.innerHeight*0.5){ activeLabel = reels[i].label; }
+      }
+    }
+    hudReelEl.textContent = activeLabel;
+    hudTimeEl.textContent = mm + ':' + ss;
+  }
+
+  /* ============ NAV BG ON SCROLL ============ */
+  function updateNavBg(){
+    var nav = document.getElementById('siteNav');
+    if(window.scrollY > 60){ nav.classList.add('bg-ink/80','backdrop-blur-md','border-b','border-white/[.06]'); }
+    else{ nav.classList.remove('bg-ink/80','backdrop-blur-md','border-b','border-white/[.06]'); }
+  }
+
+  /* ============ PARALLAX (light) ============ */
+  function updateParallax(){
+    if(prefersReduced) return;
+    var glow = document.getElementById('heroGlow');
+    if(!glow) return;
+    var y = window.scrollY;
+    glow.style.opacity = Math.max(0.35 - y/1400, 0);
+  }
+
+  /* ============ SCROLL LOOP ============ */
+  var ticking = false;
+  function onScroll(){
+    if(!ticking){
+      requestAnimationFrame(function(){
+        updateHud(); updateGalleryScroll(); updateNavBg(); updateParallax();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  /* ============ INIT ============ */
+  document.addEventListener('DOMContentLoaded', function(){
+    hudReelEl = document.getElementById('hudReel');
+    hudTimeEl = document.getElementById('hudTime');
+
+    renderTimeline();
+    renderFilters();
+    renderProjects('all');
+    renderSkills();
+    renderClients();
+    renderGallery();
+
+    initReveal();
+    initNav();
+    initRotatingTitle();
+    initGrain();
+    initViewfinder();
+    initMagnetic();
+    initHeroGlow();
+    setupGallery();
+
+    window.addEventListener('scroll', onScroll, {passive:true});
+    window.addEventListener('resize', function(){ isDesktop = window.innerWidth >= 1024; });
+    onScroll();
+
+    runPreloader();
+  });
+})();
+</script>
+</body>
+</html>
